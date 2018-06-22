@@ -11,7 +11,7 @@
         <h3 class="step__heading">1. 驗證你人類的身份</h3>
         <form action="">
           <div class="text-center">
-            <div class="g-recaptcha d-inline-block" data-callback="getResponseCode" data-sitekey="6LdMCk4UAAAAABJwVEscPGJMOxxlGyjzZerjltMq"></div>
+            <div class="g-recaptcha d-inline-block" data-callback="getResponseCode" data-sitekey="6LeJVWAUAAAAAKaPN3fOja9vS54P27n1Ygp-mdHc"></div>
           </div>
           <!-- <div class="mt-3">
                         <button type="submit" class="button button-primary">驗證</button>
