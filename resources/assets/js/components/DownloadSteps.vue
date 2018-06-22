@@ -5,7 +5,13 @@
       <div class="file-info__size">{{ prettySize }}</div>
     </div>
     <div class="download-steps text-center">
-      <h2>下載步驟</h2>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-4679085340013866" data-ad-slot="6717708981"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+
+      <h2 class="mt-4">下載步驟</h2>
 
       <div class="step step1" v-if="currentStep === 1">
         <h3 class="step__heading">1. 驗證你人類的身份</h3>
@@ -33,11 +39,7 @@
       <div class="step step3" v-else>
         <h3 class="step__heading">3. 可以下載了</h3>
         <div class="mt-3">
-          <a target="_blank" 
-             :href="`/files/${this.data.hashId}/download/${this.downloadToken}`" 
-             class="button button-secondary" 
-             :class="{ 'disabled': isDownloaded }"
-             @click.once="downloadFile()">立即下載</a>
+          <a target="_blank" :href="`/files/${this.data.hashId}/download/${this.downloadToken}`" class="button button-secondary" :class="{ 'disabled': isDownloaded }" @click.once="downloadFile()">立即下載</a>
         </div>
       </div>
     </div>
@@ -54,12 +56,12 @@ export default {
     return {
       countDownNum: 20,
       currentStep: 1,
-      downloadToken: '',
+      downloadToken: "",
       data: this.file,
       isDownloaded: false,
       msg: {
-        status: '',
-        body: ''
+        status: "",
+        body: ""
       }
     };
   },
@@ -100,7 +102,8 @@ export default {
       }, 1000);
     },
     getDownloadToken() {
-      axios.get(`/files/${this.data.hashId}/token`)
+      axios
+        .get(`/files/${this.data.hashId}/token`)
         .then(({ data }) => {
           this.downloadToken = data.token;
         })
@@ -123,7 +126,7 @@ export default {
   },
   watch: {
     countDownNum() {
-      if( this.countDownNum <= 0 ) {
+      if (this.countDownNum <= 0) {
         this.currentStep = 3;
       }
     }
