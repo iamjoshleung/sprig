@@ -7,7 +7,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 
-        <title>Sprig</title>
+        <title>{{ config('app.name', 'Laravel') }}</title>
     </head>
     <body>
         <div id="app">
