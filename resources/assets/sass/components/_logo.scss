@@ -1,0 +1,20 @@
+.logo {
+    font-size: 2rem;
+    display: block;
+    transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &__front {
+        color: #6CA34E;
+    }
+
+    &__back {
+        display: inline-block;
+        margin-left: -3px;
+        color: black;
+    }
+
+}

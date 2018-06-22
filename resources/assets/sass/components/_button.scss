@@ -1,0 +1,41 @@
+.button {
+    font-size: 1.5rem;
+    padding: 0.4rem 2rem;
+    border-width: 1px;
+    border-style: solid;
+    letter-spacing: 2px;
+    color: white;
+    display: inline-block;
+
+    &-primary {
+        border-color: $color-secondary;
+        background: $color-secondary;
+
+        &:hover {
+            background: darken($color-secondary, 20%);
+            color: white;
+        }
+
+        &.disabled {
+            pointer-events: none;
+            background: darken($color-secondary, 30%);
+        }
+    }
+
+    &-secondary {
+        background: $color-tertiary;
+        border-color: $color-tertiary;
+
+        &:hover {
+            background: darken($color-tertiary, 20%);
+            border-color: darken($color-tertiary, 20%);
+            color: white;    
+        }
+
+        &.disabled {
+            pointer-events: none;
+            background: darken($color-tertiary, 30%);
+            border-color: darken($color-tertiary, 30%);
+        }
+    }
+}

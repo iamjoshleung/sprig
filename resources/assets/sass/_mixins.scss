@@ -1,0 +1,24 @@
+// MDEIA QUERIES
+/*********************
+BREAKPOINTS
+*********************/
+
+@mixin bp($point) {
+  @if $point == tablet {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $point == laptop {
+    @media (min-width: 99.2rem) {
+      @content;
+    }
+  } @else if $point == desktop {
+    @media (min-width: 120rem) {
+      @content;
+    }
+  } @else if $point == mobileonly {
+    @media (max-width: 37.5em) {
+      @content;
+    }
+  }
+}

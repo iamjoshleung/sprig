@@ -1,0 +1,14 @@
+.modal {
+    &-header {
+        border-bottom: 0;
+
+        .close {
+            font-size: 3rem;
+        }
+    }
+
+    &-content {
+        height: calc(100vh - 15px);
+        border-radius: 0;
+    }
+}

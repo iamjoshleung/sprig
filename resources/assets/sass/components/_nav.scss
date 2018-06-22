@@ -1,0 +1,30 @@
+.nav {
+    &-mobile {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 0;
+        background: #4EC98C;
+        z-index: 900;
+        transition: all 0.3s cubic-bezier(0.11, 1.63, 1, 1.33);
+
+        &.active {
+            width: 200px;
+        }
+    }
+
+    &-list {
+        list-style: none;
+        font-size: 1.5rem;
+        padding-top: 6rem;
+
+        a {
+            color: white;
+        }
+
+        li {
+            margin-bottom: 1rem;
+        }
+    }
+}
