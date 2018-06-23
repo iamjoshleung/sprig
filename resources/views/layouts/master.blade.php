@@ -31,6 +31,7 @@
     @include('partials.footer')
     </div>
 
+    <script src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script src="{{ url(mix('js/manifest.js')) }}"></script>
     <script src="{{ url(mix('js/vendor.js')) }}"></script>
     <script src="{{ url(mix('js/app.js')) }}"></script>

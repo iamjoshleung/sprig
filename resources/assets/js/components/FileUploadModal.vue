@@ -39,7 +39,9 @@
 </template>
 
 <script>
-import Dropzone from "dropzone";
+import '../bootstrap';
+require('jquery');
+const Dropzone = require('dropzone');
 
 export default {
   data() {

@@ -5,12 +5,8 @@
       <div class="file-info__size">{{ prettySize }}</div>
     </div>
     <div class="download-steps text-center">
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <!-- klouderr 728-2 -->
       <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-4679085340013866" data-ad-slot="7988482236"></ins>
-      <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
 
       <h2 class="mt-4">下載步驟</h2>
 
@@ -48,7 +44,6 @@
 </template>
 
 <script>
-import prettyBytes from "pretty-bytes";
 import { eventBus } from "../app";
 
 export default {
@@ -67,13 +62,13 @@ export default {
     };
   },
   computed: {
+    // https://gist.github.com/lanqy/5193417
     prettySize() {
-      return prettyBytes(Number(this.file.size));
+      return this.bytesToSize(Number(this.file.size));
     }
   },
   mounted() {
-    // console.log(this.file);
-    // this.countDownNum -= 1;
+    const adsbygoogle = (window.adsbygoogle || []).push({});
   },
   created() {
     eventBus.$on("receivedResCode", token => {
@@ -81,6 +76,13 @@ export default {
     });
   },
   methods: {
+    bytesToSize(bytes) {
+      const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
+      if (bytes === 0) return "n/a";
+      const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10);
+      if (i === 0) return `${bytes} ${sizes[i]})`;
+      return `${(bytes / 1024 ** i).toFixed(1)} ${sizes[i]}`;
+    },
     verifyRecaptcha(token) {
       axios
         .post("/verify-recaptcha", {
