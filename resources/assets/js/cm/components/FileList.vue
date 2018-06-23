@@ -20,6 +20,7 @@
                     <td>{{ file.created_at }}</td>
                     <td>
                         <a :href="file.link" target="_blank">Link</a>
+                        <a href="#" @click.prevent="destroy(file.hashId)">Remove</a>
                     </td>
                 </tr>
             </tbody>
@@ -35,6 +36,13 @@ export default {
   methods: {
     prettySize(size) {
       return prettyBytes(Number(size));
+    },
+    destroy(id) {
+        axios.delete(`/cm/files/${id}`)
+            .then(res => {
+                this.$emit('deleted', id);
+            })
+            .catch(err => console.log(err));
     }
   }
 };

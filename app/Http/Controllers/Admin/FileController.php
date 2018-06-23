@@ -33,4 +33,15 @@ class FileController extends Controller
             $paginator
         );
     }
+
+    /**
+     * 
+     * 
+     * @return 
+     */
+    public function destroy(File $file) {
+        $file->delete();
+        \Storage::delete($file->path);
+        return response([], 204);
+    }
 }

@@ -1,7 +1,8 @@
 <template>
     <div class="l-files">
+        <div class="alert alert-success" v-show="message">{{ message }}</div>
         <file-filter @filter-changed="filterFiles"></file-filter>
-        <file-list :items="items"></file-list>
+        <file-list :items="items" @deleted="handleDeletion"></file-list>
         <paginator :data="data" @changed="toPage"></paginator>
     </div>
 </template>
@@ -15,7 +16,8 @@ export default {
   data() {
     return {
       data: "",
-      items: []
+      items: [],
+      message: ''
     };
   },
   components: {
@@ -44,6 +46,14 @@ export default {
         this.items = this.data.data.filter(item => {
             return item.hashId.includes(val);
         });
+    },
+    handleDeletion(id) {
+      this.items = this.items.filter(item => item.hashId !== id);
+      this.message = `File with id ${id} has been deleted`;
+
+      setTimeout(() => {
+        this.message = '';
+      }, 2000);
     }
   }
 };

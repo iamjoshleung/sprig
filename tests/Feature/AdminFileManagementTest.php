@@ -17,7 +17,7 @@ class AdminFileManagementTest extends TestCase
 
         $this->actingAs($admin);
 
-        $file = factory('App\File', 4)->create();
+        $files = factory('App\File', 4)->create();
 
 
         $res = $this->getJson('/cm/files');
@@ -25,5 +25,21 @@ class AdminFileManagementTest extends TestCase
         $res->assertStatus(200)
             ->assertJsonCount(4);
         
+    }
+
+    /** @test */
+    public function admins_can_remove_files() {
+        $admin = factory('App\User')->create([
+            'type' => User::ADMIN_TYPE
+        ]);
+
+        $this->actingAs($admin);
+
+        $file = factory('App\File')->create();
+
+        // dd($file->getRouteKey());
+
+        $this->delete("/cm/files/{$file->getRouteKey()}")
+            ->assertStatus(204);
     }
 }

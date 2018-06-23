@@ -12,10 +12,6 @@ let webpack = require('webpack');
  |
  */
 
-// mix.autoload({
-//   jquery: ['$', 'jQuery', 'window.jQuery', 'window.jquery', 'jquery'],
-//  });
-
 mix
   .js("resources/assets/js/cm/app.js", "public/js/cm")
   .sass("resources/assets/sass/cm/app.scss", "public/css/cm")

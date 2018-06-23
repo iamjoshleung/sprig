@@ -89,8 +89,10 @@ Route::post('/verify-recaptcha', function (Request $request) {
 Route::prefix('cm')->group(function () {
     Route::get('/', 'AdminController@index')->name('cm.index');
 
+
     Route::namespace('Admin')->group(function () {
         Route::get('/files', 'FileController@index')->name('cm.files.index');
+        Route::delete('/files/{file}', 'FileController@destroy')->name('cm.files.destroy');
     });
 
     // Authentication Routes...
