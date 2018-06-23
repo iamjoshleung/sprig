@@ -6,7 +6,8 @@
     </div>
     <div class="download-steps text-center">
       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-4679085340013866" data-ad-slot="6717708981"></ins>
+      <!-- klouderr 728-2 -->
+      <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-4679085340013866" data-ad-slot="7988482236"></ins>
       <script>
       (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
