@@ -3,4 +3,13 @@
     background-size: 100%;
     background-position: 0% 100%;
     background-repeat: no-repeat;
+
+    &--ads-copy {
+        max-width: 600px;
+        margin: 4rem auto;
+
+        p {
+            font-size: 1.2rem;
+        }
+    }
 }
