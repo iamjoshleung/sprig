@@ -20,9 +20,7 @@ use App\Http\Requests\ReceiveFeedback;
 //     return view('styles');
 // })->name('styles');
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', 'PageController@index')->name('index');
 
 // Pages
 Route::get('/feedback', 'PageController@getFeedback')->name('feedback');

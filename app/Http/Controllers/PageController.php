@@ -9,6 +9,16 @@ use App\Http\Requests\ReceiveFeedback;
 
 class PageController extends Controller
 {
+
+    /**
+     * 
+     * 
+     * @return 
+     */
+    public function index() {
+        return view('index');
+    }
+
     /**
      * 
      * 
