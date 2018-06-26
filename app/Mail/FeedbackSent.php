@@ -30,8 +30,9 @@ class FeedbackSent extends Mailable
      */
     public function build()
     {
-        return $this->from(env('MAIL_FROM', 'contact@sprig.com'))
+        return $this->from(config('mail.from.address'))
             ->subject('New feedback from user.')
+            ->replyTo($this->data['email'])
             ->markdown('mails.site.feedback');
     }
 }

@@ -16,75 +16,29 @@ use App\Http\Requests\ReceiveFeedback;
 |
  */
 
-Route::get('/styles', function () {
-    return view('styles');
-})->name('styles');
+// Route::get('/styles', function () {
+//     return view('styles');
+// })->name('styles');
 
 Route::get('/', function () {
     return view('index');
 })->name('index');
 
-// Route::get('/download', function () {
-//     return view('download');
-// })->name('download.show');
+// Pages
+Route::get('/feedback', 'PageController@getFeedback')->name('feedback');
+Route::post('/feedback', 'PageController@postFeedback');
+Route::get('/about', 'PageController@about')->name('about');
+Route::get('/service-policy', 'PageController@servicePolicy')->name('service-policy');
+Route::get('/terms-of-service', 'PageController@termsOfService')->name('terms-of-service');
+Route::get('/copyright', 'PageController@copyright')->name('copyright');
 
-Route::get('/feedback', function () {
-    return view('feedback');
-})->name('feedback');
-
-Route::post('/feedback', function (ReceiveFeedback $request) {
-    Mail::to(env('MAIL_TO', 'contact@example.com'))->send(new FeedbackSent($request->all()));
-    return response()->json([], 204);
-});
-
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
-
-// Route::get('/contact', function () {
-//     return view('contact');
-// })->name('contact');
-
-Route::get('/service-policy', function () {
-    return view('service-policy');
-})->name('service-policy');
-
-Route::get('/terms-of-service', function () {
-    return view('terms-of-service');
-})->name('terms-of-service');
-
-// Route::get('/privacy-policy', function () {
-//     return view('privacy-policy');
-// })->name('privacy-policy');
-
-Route::get('/copyright', function () {
-    return view('copyright');
-})->name('copyright');
-
-// Route::get('/takedown-guidance', function () {
-//     return view('takedown-guidance');
-// })->name('takedown-guidance');
-
-Route::post('/file-upload', function () {
-    return response()->json('Unable to upload this file. Try again later.');
-});
-
+// Files
 Route::post('files', 'FileController@store');
 Route::get('files/{file}', 'FileController@show')->name('files.show');
 Route::get('files/{file}/token', 'FileController@generateToken')->name('files.token');
 Route::get('files/{file}/download/{downloadToken}', 'FileController@download')->name('files.download');
 Route::delete('files/{file}/{token}', 'FileController@destroy')->name('files.destroy');
-Route::post('/verify-recaptcha', function (Request $request) {
-    $client = new \GuzzleHttp\Client();
-    $res = $client->request('POST', 'https://www.google.com/recaptcha/api/siteverify', [
-        'form_params' => [
-            'g-recaptcha-response' => $request->input('g-recaptcha-response'),
-            'secret' => env('RECAPTCHA_SCRET', 'secret')
-        ]
-    ]);
-
-    return response([], $res->getStatusCode());
-});
+Route::post('/verify-recaptcha', 'RecaptchaController@verify');
 
 Route::prefix('cm')->group(function () {
     Route::get('/', 'AdminController@index')->name('cm.index');
