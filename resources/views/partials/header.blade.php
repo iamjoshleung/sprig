@@ -1,11 +1,14 @@
 <div class="l-header">
     <div class="container">
         <div class="row">
-            <div class="col-9">
+            <div class="col-3">
                 <a href="{{ route('index') }}" class="logo">
                     <span class="logo__front">枝</span>
                     <span class="logo__back">點</span>
                 </a>
+            </div>
+            <div class="col-6 d-flex align-items-center">
+                <a href="{{ route('photosets.index') }}" class="h3 mb-0">男色圖集</a>
             </div>
             <div class="col-3">
                 <div class="i-hamburger js-icon-burger">
