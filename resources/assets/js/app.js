@@ -6,6 +6,7 @@
  */
 
 require('babel-polyfill');
+require('promise.prototype.finally');
 require('./bootstrap');
 window.Vue = require('vue');
 
@@ -20,6 +21,21 @@ window.Vue = require('vue');
 Vue.component('file-upload-modal', require('./components/FileUploadModal.vue'));
 Vue.component('download-steps', require('./components/DownloadSteps.vue'));
 Vue.component('form-feedback', require('./components/forms/Feedback.vue'));
+Vue.component('photosets', require('./components/Photosets.vue'));
+Vue.component('paginator', require('./components/Paginator.vue'));
+Vue.component('flash', require('./components/Flash.vue'));
+
+Vue.prototype.isMobile = () => {
+    return window.innerWidth < 768;
+}
+
+import authorizations from './authorizations';
+
+Vue.prototype.authorize = (...params) => {
+    if( !window.App.signedIn ) return false;
+    // console.log(authorizations['isAdmin'])
+    return authorizations[params[0]]();
+};
 
 export const eventBus = new Vue();
 
@@ -30,6 +46,10 @@ const app = new Vue({
 window.getResponseCode = (token) => {
     eventBus.$emit('receivedResCode', token);
 };
+
+window.flash = (msg) => {
+    eventBus.$emit('flash', msg);
+}
 
 const navMobilePanel = document.querySelector('.js-nav-mobile');
 

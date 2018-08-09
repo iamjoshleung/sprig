@@ -20,6 +20,13 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <script>
+        window.App = @json([
+            'signedIn' => auth()->check(),
+            'user' => auth()->user()
+        ]);
+    </script>
 </head>
 
 <body>
@@ -28,6 +35,7 @@
         <div class="l-main">
             @yield('main')
         </div>
+        <flash></flash>
     @include('partials.footer')
     </div>
 

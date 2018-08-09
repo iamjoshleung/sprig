@@ -1,0 +1,33 @@
+@mixin paginator-common {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #55c2b7;
+    background-size: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+    &.disabled {
+        background-color: #b8b8b8;
+        pointer-events: none;
+    }
+}
+
+.paginator {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 3rem;
+
+    &__prev {
+        @include paginator-common;
+        margin-right: 4rem;
+        background-image: url('../img/icons/arrow-prev.svg');
+    }
+
+    &__next {
+        @include paginator-common;
+        background-image: url('../img/icons/arrow-next.svg');
+    }
+}
