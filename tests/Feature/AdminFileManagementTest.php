@@ -21,9 +21,12 @@ class AdminFileManagementTest extends TestCase
 
 
         $res = $this->getJson('/cm/files');
+
+        // dd($res->json()['data']);
             
-        $res->assertStatus(200)
-            ->assertJsonCount(4);
+        $res->assertStatus(200);
+
+        $this->assertCount(4, $res->json()['data']);
         
     }
 

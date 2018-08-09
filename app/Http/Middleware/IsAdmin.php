@@ -18,6 +18,11 @@ class IsAdmin
         if( auth()->check() && auth()->user()->isAdmin() ) {
             return $next($request);
         }
+
+        if( $request->expectsJson() ) {
+            return response([], 401);
+        }
+
         return redirect()->route('cm.login');
     }
 }

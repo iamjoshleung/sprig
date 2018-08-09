@@ -38,6 +38,10 @@ Route::get('files/{file}/download/{downloadToken}', 'FileController@download')->
 Route::delete('files/{file}/{token}', 'FileController@destroy')->name('files.destroy');
 Route::post('/verify-recaptcha', 'RecaptchaController@verify');
 
+// Photosets
+Route::get('/photosets', 'PhotosetController@index')->name('photosets.index');
+Route::delete('/photosets/{photoset}', 'PhotosetController@destroy')->name('photosets.destroy')->middleware('auth.admin');
+
 Route::prefix('cm')->group(function () {
     Route::get('/', 'AdminController@index')->name('cm.index');
 
@@ -45,6 +49,11 @@ Route::prefix('cm')->group(function () {
     Route::namespace('Admin')->group(function () {
         Route::get('/files', 'FileController@index')->name('cm.files.index');
         Route::delete('/files/{file}', 'FileController@destroy')->name('cm.files.destroy');
+
+        Route::get('/sites', 'TumblrSiteController@index')->name('cm.sites.index');
+
+        Route::post('/sites', 'TumblrSiteController@store')->name('cm.sites.store');
+        Route::delete('/sites/{tumblr_site}', 'TumblrSiteController@destroy')->name('cm.sites.destroy');
     });
 
     // Authentication Routes...

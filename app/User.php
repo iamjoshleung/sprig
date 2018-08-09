@@ -31,6 +31,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $appends = ['is_admin'];
+
     /**
      * Check if the user is admin
      * 
@@ -38,5 +40,14 @@ class User extends Authenticatable
      */
     public function isAdmin() {
         return $this->type === self::ADMIN_TYPE;
+    }
+
+    /**
+     * 
+     * 
+     * @return 
+     */
+    public function getIsAdminAttribute() {
+        return $this->isAdmin();
     }
 }

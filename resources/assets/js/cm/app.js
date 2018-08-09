@@ -9,6 +9,7 @@ require('../bootstrap');
 window.Vue = require('vue');
 
 Vue.component('app-files', require('./pages/Files.vue'));
+Vue.component('app-sites', require('./pages/Sites.vue'));
 
 const app = new Vue({
     el: '#app'

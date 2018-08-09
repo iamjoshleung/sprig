@@ -1,0 +1,41 @@
+.l-photosets {
+    &--items {
+        
+
+        @include media-breakpoint-up(md) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        > .card {
+            max-width: 92%;
+            margin-bottom: 2rem;
+            cursor: pointer;
+
+            @include media-breakpoint-up(md) {
+                width: 40%;
+            }
+
+            @include media-breakpoint-up(lg) {
+                width: 32%;
+            }
+        }
+    }
+
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .swiper-pagination {
+        background-color: white;
+    }
+}

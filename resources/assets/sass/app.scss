@@ -5,6 +5,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Swiper
+@import '~swiper/dist/css/swiper';
+
 // Variables
 @import "variables";
 @import "base";
@@ -16,11 +19,18 @@
 @import "./components/modal-upload";
 @import "./components/file-info";
 @import "./components/icons/hamburger";
+@import "./components/modal";
+@import "./components/paginator";
+@import "./components/gallery";
+
 @import "./overrides/bs-modal";
 @import "./overrides/bs-form";
 @import "./overrides/bs-alert";
 @import "./overrides/parsley";
+@import "./overrides/swiper";
+
 @import "./layouts/main";
 @import "./layouts/header";
 @import "./layouts/index";
 @import "./layouts/download";
+@import "./layouts/photosets";

@@ -30,7 +30,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @auth
+                        <a class="nav-item ml-5" href="{{ route('cm.sites.index') }}">Tumblr Sites</a> 
+                        <a class="nav-item ml-5" href="{{ route('cm.index') }}">Files</a> 
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -66,7 +69,8 @@
 
         <main class="py-4 container">
             <div class="row">
-                {{-- <div class="col-12 col-lg-4">
+                {{--
+                <div class="col-12 col-lg-4">
                     <ul class="list-group">
                         <li class="list-group-item">File Management</li>
                     </ul>
