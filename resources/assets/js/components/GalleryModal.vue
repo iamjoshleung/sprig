@@ -29,6 +29,7 @@
 
     <template slot="footer">
       <button class="button button-primary gallery__remove-btn" v-if="authorize('isAdmin')" @click="deleteModal">刪除</button>
+      <div class="gallery__identifier" v-if="authorize('isAdmin')">{{ post.site.identifier }}</div>
     </template>
   </modal>
 </template>

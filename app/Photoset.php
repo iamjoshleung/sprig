@@ -9,6 +9,8 @@ class Photoset extends Model
 
     protected $fillable = ['images', 'site_id'];
 
+    protected $with = ['site'];
+
     /**
      * Define relationship with TumblrSite
      *
