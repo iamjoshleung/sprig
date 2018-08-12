@@ -17,7 +17,13 @@ class TumblrScrapper {
     }
 
     public function scrapImagePosts() {
-        $data = $this->client->getBlogPosts("{$this->site->identifier}.tumblr.com", array('type' => 'photo', 'limit' => 20));
+        try {
+            $data = $this->client->getBlogPosts("{$this->site->identifier}.tumblr.com", array('type' => 'photo', 'limit' => 20));
+            // dd($data);
+        } catch(\Tumblr\API\RequestException $e) {
+            die("Tumblr Api Error: " . $e);
+        }
+        
         return $data->posts;
     }
 }

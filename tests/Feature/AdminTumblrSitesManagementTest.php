@@ -11,12 +11,25 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class AdminTumblrSitesManagementTest extends TestCase
 {
+
+    protected $admin;
+
+    /**
+     * 
+     * 
+     * @return 
+     */
+    public function setUp() {
+        parent::setUp();
+        $this->admin = factory('App\User')->create(['type' => User::ADMIN_TYPE]);
+        $this->signIn($this->admin);
+    }
+
     // use DatabaseMigrations;
 
     /** @test */
     public function admin_users_can_add_tumblr_sites()
     {
-        $this->signIn();
 
         $this->postJson(route('cm.sites.store'), [
             'url' => 'http://puppiestotherescue.tumblr.com/'
@@ -33,11 +46,11 @@ class AdminTumblrSitesManagementTest extends TestCase
     /** @test */
     public function admin_can_delete_tumblr_sites()
     {
-        $this->signIn();
 
         $res = $this->postJson(route('cm.sites.store'), [
             'url' => 'http://puppiestotherescue.tumblr.com/'
         ]);
+  
         $res->assertStatus(201);
 
         $site = $res->json();
@@ -52,11 +65,10 @@ class AdminTumblrSitesManagementTest extends TestCase
     /** @test */
     public function repeated_sites_will_not_be_saved_to_DB()
     {
-        $this->signIn();
-
         $res = $this->postJson(route('cm.sites.store'), [
             'url' => 'http://puppiestotherescue.tumblr.com/'
         ]);
+
         $res->assertStatus(201);
 
         $res = $this->postJson(route('cm.sites.store'), [

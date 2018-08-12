@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use stdClass;
+use Carbon\Carbon;
 use Tests\TestCase;
 use App\Services\TumblrFilter;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -14,7 +15,7 @@ class TumblrFilterTest extends TestCase
     /** @test */
     public function it_filters_out_posts_older_than_last_scrapped_timestamp()
     {
-        $last_scrapped_time = now()->subMonth();
+        $last_scrapped_at = now()->subMonth();
 
         $post1 = new stdClass();
         $post1->timestamp = now()->timestamp;
@@ -26,7 +27,7 @@ class TumblrFilterTest extends TestCase
             $post1, $post2
         ];
 
-        $filter = new TumblrFilter($last_scrapped_time, $posts);
+        $filter = new TumblrFilter($last_scrapped_at, $posts);
 
         $filteredPosts = $filter->filterOldPosts();
 
@@ -39,9 +40,9 @@ class TumblrFilterTest extends TestCase
         // make stdClass instance
         $posts = json_decode('[{"type":"photo","id":175794735018,"post_url":"http://puppiestotherescue.tumblr.com/post/175794735018","date":"2018-07-11 23:30:13 GMT","timestamp":1531351813,"trail":[],"image_permalink":"http://puppiestotherescue.tumblr.com/image/175794735018","photos":[{"caption":"","original_size":{"url":"https://78.media.tumblr.com/8de81ee3c9b10eda71fc1d5aba3a48f4/tumblr_p6sreryByc1tbwj7ho1_1280.jpg","width":1150,"height":1350},"alt_sizes":[{"url":"https://78.media.tumblr.com/8de81ee3c9b10eda71fc1d5aba3a48f4/tumblr_p6sreryByc1tbwj7ho1_1280.jpg","width":1150,"height":1350},{"url":"https://78.media.tumblr.com/8de81ee3c9b10eda71fc1d5aba3a48f4/tumblr_p6sreryByc1tbwj7ho1_640.jpg","width":640,"height":751},{"url":"https://78.media.tumblr.com/8de81ee3c9b10eda71fc1d5aba3a48f4/tumblr_p6sreryByc1tbwj7ho1_540.jpg","width":540,"height":634},{"url":"https://78.media.tumblr.com/8de81ee3c9b10eda71fc1d5aba3a48f4/tumblr_p6sreryByc1tbwj7ho1_500.jpg","width":500,"height":587},{"url":"https://78.media.tumblr.com/8de81ee3c9b10eda71fc1d5aba3a48f4/tumblr_p6sreryByc1tbwj7ho1_400.jpg","width":400,"height":470},{"url":"https://78.media.tumblr.com/8de81ee3c9b10eda71fc1d5aba3a48f4/tumblr_p6sreryByc1tbwj7ho1_250.jpg","width":250,"height":293},{"url":"https://78.media.tumblr.com/8de81ee3c9b10eda71fc1d5aba3a48f4/tumblr_p6sreryByc1tbwj7ho1_100.jpg","width":100,"height":117},{"url":"https://78.media.tumblr.com/8de81ee3c9b10eda71fc1d5aba3a48f4/tumblr_p6sreryByc1tbwj7ho1_75sq.jpg","width":75,"height":75}]}]}]');
 
-        $last_scrapped_time = now()->subMonth();
+        $last_scrapped_at = Carbon::createFromTimestamp(1531351813)->subMonth();
 
-        $filter = new TumblrFilter($last_scrapped_time, $posts);
+        $filter = new TumblrFilter($last_scrapped_at, $posts);
 
         $filteredPosts = $filter->filterOldPosts();
 
