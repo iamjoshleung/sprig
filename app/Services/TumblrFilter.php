@@ -32,7 +32,7 @@ class TumblrFilter
 
         foreach ($filteredPosts as $post) {
             $collection = [];
-            die($post);
+            var_dump($post);
             foreach ($post->photos as $photo) {
                 $collection[sizeof($collection)] = [
                     'original' => $this->getOriginalImageData($photo),
