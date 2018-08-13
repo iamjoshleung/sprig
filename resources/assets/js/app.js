@@ -38,6 +38,10 @@ Vue.prototype.authorize = (...params) => {
     return authorizations[params[0]]();
 };
 
+Vue.prototype.isMobile = _ => {
+    return window.innerWidth < 768;
+}
+
 export const eventBus = new Vue();
 
 const app = new Vue({
