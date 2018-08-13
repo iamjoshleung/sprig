@@ -27,6 +27,7 @@
         "popper.js": "^1.12",
         "pretty-bytes": "^5.1.0",
         "promise.prototype.finally": "^3.1.0",
+        "smooth-scroll": "^14.2.1",
         "swiper": "^4.3.3",
         "vue": "^2.5.7"
     }
