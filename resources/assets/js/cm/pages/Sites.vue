@@ -20,7 +20,8 @@
                         <th scope="col">#</th>
                         <th scope="col">URL</th>
                         <th scope="col">Identifier</th>
-                        <th scope="col">Last Scrapped @</th>
+                        <th scope="col">Last Scrapped Images @</th>
+                        <th scope="col">Last Scrapped Videos @</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -29,7 +30,8 @@
                         <th scope="row">{{ site.id }}</th>
                         <td>{{ site.url }}</td>
                         <td>{{ site.identifier }}</td>
-                        <td>{{ site.last_scrapped_at }}</td>
+                        <td>{{ site.last_scrapped_images_at }}</td>
+                        <td>{{ site.last_scrapped_videos_at }}</td>
                         <td><a href="#" @click.prevent="destroy(site.id)">Remove</a></td>
                     </tr>
                 </tbody>

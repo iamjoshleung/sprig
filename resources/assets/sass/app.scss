@@ -8,6 +8,10 @@
 // Swiper
 @import '~swiper/dist/css/swiper';
 
+// Fontawsome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+
 // Variables
 @import "variables";
 @import "base";
@@ -34,3 +38,4 @@
 @import "./layouts/index";
 @import "./layouts/download";
 @import "./layouts/photosets";
+@import "./layouts/videos";

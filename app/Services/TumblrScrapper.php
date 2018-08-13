@@ -26,4 +26,20 @@ class TumblrScrapper {
         
         return $data->posts;
     }
+
+    /**
+     * 
+     * 
+     * @return 
+     */
+    public function scrapVideoPosts() {
+        try {
+            $data = $this->client->getBlogPosts("{$this->site->identifier}.tumblr.com", array('type' => 'video', 'limit' => 20));
+            // dd($data);
+        } catch(\Tumblr\API\RequestException $e) {
+            die("Tumblr Api Error: " . $e);
+        }
+        
+        return $data->posts;
+    }
 }

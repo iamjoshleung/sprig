@@ -24,6 +24,7 @@ Vue.component('form-feedback', require('./components/forms/Feedback.vue'));
 Vue.component('photosets', require('./components/Photosets.vue'));
 Vue.component('paginator', require('./components/Paginator.vue'));
 Vue.component('flash', require('./components/Flash.vue'));
+Vue.component('page-videos', require('./pages/Videos.vue'));
 
 Vue.prototype.isMobile = () => {
     return window.innerWidth < 768;

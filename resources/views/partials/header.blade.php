@@ -8,7 +8,8 @@
                 </a>
             </div>
             <div class="col-6 d-flex align-items-center">
-                <a href="{{ route('photosets.index') }}" class="h3 mb-0">男色圖集</a>
+                <a href="{{ route('photosets.index') }}" class="h3 mb-0 mr-4">圖片</a>
+                <a href="{{ route('videos.index') }}" class="h3 mb-0">視頻</a>
             </div>
             <div class="col-3">
                 <div class="i-hamburger js-icon-burger">

@@ -17,6 +17,7 @@ mix
   .sass("resources/assets/sass/cm/app.scss", "public/css/cm")
   .js("resources/assets/js/app.js", "public/js")
   .sass("resources/assets/sass/app.scss", "public/css")
+  .copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts')
   .options({
     processCssUrls: false
   })

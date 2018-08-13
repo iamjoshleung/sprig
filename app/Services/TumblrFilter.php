@@ -52,6 +52,32 @@ class TumblrFilter
      * 
      * @return 
      */
+    public function getFilteredVideos($filteredPosts): array {
+        $collection = [];
+
+        foreach($filteredPosts as $post) {
+
+            if($post->type !== 'video') {
+                continue;
+            }
+
+            $collection[] = [
+                'video_url' => $post->video_url,
+                'thumbnail_url' => $post->thumbnail_url,
+                'thumbnail_width' => $post->thumbnail_width,
+                'thumbnail_height' => $post->thumbnail_height,
+                'duration' => $post->duration
+            ];
+        }
+
+        return $collection;
+    }
+
+    /**
+     * 
+     * 
+     * @return 
+     */
     public function filterOldPosts()
     {
         return collect($this->posts)->filter(function ($post) {

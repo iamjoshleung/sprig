@@ -1,0 +1,66 @@
+.l-videos {
+    width: 100%;
+    height: 100vh;
+
+    &__video-wrap {
+        height: calc(100vh - 300px - 4rem);
+        background-color: black;
+    }
+
+    &__toolbar {
+        height: 50px;
+        font-size: 1.6rem;
+        border-top: 1px solid $color-gray;
+        border-bottom: 1px solid $color-gray;
+        display: flex;
+        align-items: center;
+        padding-left: 2rem;
+
+        .action {
+            cursor: pointer;
+
+            &.disabled {
+                color: $color-gray;
+                pointer-events: none;
+                cursor: not-allowed;
+            }
+
+            i {
+                margin-right: .5rem;
+            }
+        }
+    }
+
+    &__recommandations {
+        min-height: 250px;
+        min-width: 100%;
+        padding: 2rem;
+
+        @include media-breakpoint-up(md) {
+            display: flex;
+            overflow-x: auto;
+        }
+    }
+
+    &__selection-item {
+        height: 250px;
+        min-width: 100%;
+        border-radius: 5px;
+        cursor: pointer;
+
+        @include media-breakpoint-up(md) {
+            min-width: 250px;
+
+            &:not(:last-child) {
+                margin-right: 2rem;
+            }
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            border-radius: 5px;
+        }
+    }
+}

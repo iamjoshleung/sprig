@@ -42,6 +42,9 @@ Route::post('/verify-recaptcha', 'RecaptchaController@verify');
 Route::get('/photosets', 'PhotosetController@index')->name('photosets.index');
 Route::delete('/photosets/{photoset}', 'PhotosetController@destroy')->name('photosets.destroy')->middleware('auth.admin');
 
+// Videos
+Route::get('/videos', 'VideoController@index')->name('videos.index');
+
 Route::prefix('cm')->group(function () {
     Route::get('/', 'AdminController@index')->name('cm.index');
 

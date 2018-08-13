@@ -3,11 +3,6 @@
 <div class="l-photosets">
     <div class="container">
         <div class="row">
-    {{-- <!-- @foreach($photosets as $collection) 
-                    <div class="card">
-                        <img class="card-img-top" src="{{ $collection['images'][0]['alts'][0]['url'] }}" alt="Card image cap">
-                    </div>
-                @endforeach --> --}}
                 <photosets :data="{{ json_encode($photosets) }}"></photosets>
         </div>
         <div class="row">

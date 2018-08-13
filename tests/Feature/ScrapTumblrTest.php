@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Services\TumblrFilter;
 
-class ScrapTumblrImagesTest extends TestCase
+class ScrapTumblrTest extends TestCase
 {
 
     protected $site;
@@ -25,11 +25,18 @@ class ScrapTumblrImagesTest extends TestCase
     }
 
     /** @test */
-    public function it_get_the_lastest_20_images_post_from_site()
+    public function it_gets_the_latest_20_image_posts_from_site()
     {
         $scrapper = new TumblrScrapper($this->site);
 
         $this->assertCount(20, $scrapper->scrapImagePosts());
+    }
+
+    /** @test */
+    public function it_gets_the_latest_20_video_posts_from_site() {
+        $scrapper = new TumblrScrapper($this->site);
+
+        $this->assertCount(20, $scrapper->scrapVideoPosts());
     }
 
     /** @test */
