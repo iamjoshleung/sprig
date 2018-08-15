@@ -9,10 +9,19 @@
             align-items: flex-start;
         }
 
-        > .card {
+        .card {
             max-width: 92%;
             margin-bottom: 2rem;
             cursor: pointer;
+
+            &__gallery-icon {
+                font-size: 2rem;
+                position: absolute;
+                right: 1rem;
+                top: 1rem;
+                color: white;
+                pointer-events: none;
+            }
 
             @include media-breakpoint-up(md) {
                 width: 40%;

@@ -2,6 +2,7 @@
     <div class="col-12 l-photosets--items js-grid" ref="grid">
         <div class="card js-grid-item" v-for="(post, i) in collection" :key="i">
             <img @click="selectPost(post)" class="card-img-top" :srcset="srcset(post)" sizes="(max-width: 767px) 100vw, (max-width: 991px) 50vw, 20vw" :src="post['images'][0]['alts'][0]['url']" alt="Cute guys">
+            <i class="fas fa-images card__gallery-icon" v-if="hasMultipleImages(post)"></i>
         </div>
         <gallery-modal :post="currentPost" v-if="showModal"></gallery-modal>
     </div>
@@ -58,6 +59,9 @@ export default {
     selectPost(post) {
       this.showModal = true;
       this.currentPost = post;
+    },
+    hasMultipleImages(post) {
+      return post.images.length > 1;
     }
   }
 };
