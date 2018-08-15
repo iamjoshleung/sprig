@@ -1,3 +1,11 @@
 .l-header {
     margin-top: 3rem;
+
+    &__desktop-nav {
+        @include media-breakpoint-up(md) {
+            a {
+                font-size: 1.6rem;
+            }
+        }
+    }
 }

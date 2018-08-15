@@ -1,17 +1,20 @@
 <div class="l-header">
     <div class="container">
         <div class="row">
-            <div class="col-3">
-                <a href="{{ route('index') }}" class="logo">
-                    <span class="logo__front">枝</span>
-                    <span class="logo__back">點</span>
-                </a>
+            <div class="col-3 d-flex align-items-center">
+                <h1 class="pr-4 mb-0">
+                    <a href="{{ route('index') }}" class="logo">
+                        <span class="logo__front">枝</span>
+                        <span class="logo__back">點</span>
+                    </a>
+                </h1>
+                <h2 class="h4 mb-0 d-none d-md-block">同志資源社區</h2>
             </div>
-            <div class="col-6 d-flex align-items-center">
-                <a href="{{ route('photosets.index') }}" class="h3 mb-0 mr-4">圖片</a>
-                <a href="{{ route('videos.index') }}" class="h3 mb-0">視頻</a>
-            </div>
-            <div class="col-3">
+            <nav class="col-6 d-flex align-items-center l-header__desktop-nav">
+                <a href="{{ route('photosets.index') }}" class="h3 btn btn-success btn-lg mb-0 mr-4"><i class="fas fa-camera"></i> 圖片</a>
+                <a href="{{ route('videos.index') }}" class="h3 mb-0 btn btn-danger btn-lg"><i class="fas fa-fire"></i> 視頻</a>
+            </nav>
+            <div class="col-3 d-flex align-items-center">
                 <div class="i-hamburger js-icon-burger">
                     <div class="i-hamburger__line line1"></div>
                     <div class="i-hamburger__line line2"></div>
@@ -32,7 +35,8 @@
                     <li>
                         <a href="{{ route('feedback') }}">聯系我們</a>
                     </li>
-                    {{-- <li>
+                    {{--
+                    <li>
                         <a href="{{ route('contact') }}">聯絡我們</a>
                     </li> --}}
                     <li>
