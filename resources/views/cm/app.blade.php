@@ -12,7 +12,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/cm/app.css') }}" rel="stylesheet">
+    <link href="{{ asset(mix('css/cm/app.css')) }}" rel="stylesheet">
 </head>
 
 <body>
