@@ -1,5 +1,5 @@
 <template>
-    <video width="100%" height="100%" controls :poster="video.video_thumbnail">
+    <video width="100%" height="100%" controls :poster="video.thumbnail_url">
         <source :src="video.video_url" type="video/mp4" :key="video.video_url"> Your browser does not support the video tag.
     </video>
 </template>
