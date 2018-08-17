@@ -12,12 +12,10 @@
                 <div class="col-12">
                     <div class="l-download--ads-copy">
                         <h4 class="mb-2">Ads</h4>
-                        <p>‘Radical’ cloud services transforming Philippines IT outsourcing market. The IT outsourcing market in the Philippines is in the midst of a fundamental shift caused by cloud services that are key to the growth of outsourcing, hosting, and managed services.
-                            According to the International Data Corporation (IDC), total outsourcing services revenues in the Philippines surpassed US$300 million in 2017, increasing just 8.2 percent from the year before.
-                            The local IT outsourcing market underwent a 3.5 percent decline from 2016 which IDC has put down to the ‘radical change and cannibalisation’ of cloud-based models of outsourcing involving infrastructure as a service (IaaS) and software as a service (SaaS), an evolving cost structure, and significant shifts in the competitor environment.
-                            It is a tumultuous time for the market, as IDC believes the IT outsourcing market is adapting to the implementation of cloud services with players applying different strategies that range from cloud-centric to hybrid IT to push to the top of this market.
-                             “Currently, the traditional outsourcing service providers have been pressured because of the increased shift to cloud providers. More traditional services providers are expected to include new delivery structures to accommodate end users that require services such as cloud, automation, and security solutions,” says IDC Philippines services senior market analyst Alon Anthony Rejano. 
-                        </p>
+                        <p>Google unveils Cloud Services Platform, a family of cloud services. While infrastructure-as-a-service has existed for more than a decade, the market for cloud computing still has substantial room for growth: Worldwide spending on public cloud services will reach $186.4 billion this year, according to Gartner, yet remains just a fraction of overall IT spending.
+                            Recognizing this, Google on Tuesday unveiled the Cloud Services Platform, an integrated family of cloud services designed for organizations with workloads that remain on premise. The platform made its debut on the first day of the Google Next cloud conference in San Francisco.
+                            Earlier, Chen Goldberg, Google director of engineering, explained to reporters that the Cloud Services Platform "allows you to modernize wherever you are and at your own pace." By accommodating the reality of hybrid IT, Goldberg said, Google is "catering to the needs of IT organizations today and in the future."
+                            </p>
                     </div>
                 </div>
             </div>
