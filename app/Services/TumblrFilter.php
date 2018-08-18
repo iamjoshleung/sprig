@@ -57,7 +57,7 @@ class TumblrFilter
 
         foreach($filteredPosts as $post) {
 
-            if($post->type !== 'video') {
+            if($post->type !== 'video' || $post->video_type !== 'tumblr') {
                 continue;
             }
 
