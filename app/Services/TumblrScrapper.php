@@ -21,7 +21,7 @@ class TumblrScrapper {
             $data = $this->client->getBlogPosts("{$this->site->identifier}.tumblr.com", array('type' => 'photo', 'limit' => 20));
             // dd($data);
         } catch(\Tumblr\API\RequestException $e) {
-            die("Tumblr Api Error: " . $e . " when scrapping {$site->identifier}");
+            die("Tumblr Api Error: " . $e . " when scrapping {$this->site->identifier}");
         }
         
         return $data->posts;
@@ -37,7 +37,7 @@ class TumblrScrapper {
             $data = $this->client->getBlogPosts("{$this->site->identifier}.tumblr.com", array('type' => 'video', 'limit' => 20));
             // dd($data);
         } catch(\Tumblr\API\RequestException $e) {
-            die("Tumblr Api Error: " . $e . " when scrapping {$site->identifier}");
+            die("Tumblr Api Error: " . $e . " when scrapping {$this->site->identifier}");
         }
         
         return $data->posts;
