@@ -9,6 +9,8 @@ require('babel-polyfill');
 require('promise.prototype.finally');
 require('./bootstrap');
 window.Vue = require('vue');
+import './pages/movies';
+import './pages/moviesShow';
 
 
 /**

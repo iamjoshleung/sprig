@@ -1,0 +1,56 @@
+.l-movies {
+    img {
+        width: 100%;
+    }
+
+    .card {
+        width: 100%;
+        margin-bottom: 1.5rem;
+
+        @include media-breakpoint-up(md) {
+            width: 32%;
+        }
+    }
+
+    .card-body {
+        font-size: 1.4rem;
+    }
+}
+
+.l-movies-show {
+    .cover {
+        img {
+            width: 100%;
+        }
+    }
+
+    .desc {
+        font-size: 1.4rem;
+    }
+
+    .meta {
+        p {
+            font-size: 1.2rem;
+            color: #4c4c4c;
+        }
+    }
+
+    .previews {
+        display: flex;
+        align-items: flex-start;
+
+        img {
+            max-width: 100px;
+            display: inline-block;
+            padding: 1rem;
+        }
+    }
+
+    .more-movie-item {
+        width: 100%;
+
+        @include media-breakpoint-up(lg) {
+            max-width: 32%;
+        }
+    }
+}

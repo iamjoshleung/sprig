@@ -45,11 +45,14 @@ Route::delete('/photosets/{photoset}', 'PhotosetController@destroy')->name('phot
 // Videos
 Route::get('/videos', 'VideoController@index')->name('videos.index');
 
+Route::get('/movies', 'MovieController@index')->name('movies.index');
+Route::get('/movies/{movie}', 'MovieController@show')->name('movies.show');
+
 Route::prefix('cm')->group(function () {
     Route::get('/', 'AdminController@index')->name('cm.index');
 
 
-    Route::namespace('Admin')->group(function () {
+    Route::namespace('Admin')->middleware('auth.admin')->group(function () {
         Route::get('/files', 'FileController@index')->name('cm.files.index');
         Route::delete('/files/{file}', 'FileController@destroy')->name('cm.files.destroy');
 
@@ -57,6 +60,16 @@ Route::prefix('cm')->group(function () {
 
         Route::post('/sites', 'TumblrSiteController@store')->name('cm.sites.store');
         Route::delete('/sites/{tumblr_site}', 'TumblrSiteController@destroy')->name('cm.sites.destroy');
+
+        Route::get('/movies', 'MovieController@index')->name('cm.movies.index');
+        Route::post('/movies', 'MovieController@store')->name('cm.movies.store');
+        Route::get('/movies/create', 'MovieController@create')->name('cm.movies.create');
+        Route::get('/movies/{movie}', 'MovieController@show')->name('cm.movies.show');
+        Route::get('/movies/{movie}/edit', 'MovieController@edit')->name('cm.movies.edit');
+        Route::delete('/movies/{movie}', 'MovieController@destroy')->name('cm.movies.destroy');
+        Route::patch('/movies/{movie}', 'MovieController@update')->name('cm.movies.update');
+        Route::delete('/movies/{movie}/cover/{cover}', 'MovieCoverController@destroy')->name('cm.movies.cover.destroy');
+        Route::delete('/movies/{movie}/previews/{preview}', 'MoviePreviewController@destroy')->name('cm.movies.previews.destroy');
     });
 
     // Authentication Routes...

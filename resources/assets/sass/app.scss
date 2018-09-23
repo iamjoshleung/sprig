@@ -17,6 +17,9 @@
 @import "base";
 @import "mixins";
 @import "utilities";
+
+@import "~luminous-lightbox/dist/luminous-basic";
+
 @import "./components/button";
 @import "./components/logo";
 @import "./components/nav";
@@ -39,3 +42,4 @@
 @import "./layouts/download";
 @import "./layouts/photosets";
 @import "./layouts/videos";
+@import "./layouts/movies";

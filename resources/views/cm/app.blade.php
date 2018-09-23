@@ -33,6 +33,7 @@
                         @auth
                         <a class="nav-item ml-5" href="{{ route('cm.sites.index') }}">Tumblr Sites</a> 
                         <a class="nav-item ml-5" href="{{ route('cm.index') }}">Files</a> 
+                        <a class="nav-item ml-5" href="{{ route('cm.movies.index') }}">Movies</a> 
                         @endauth
                     </ul>
 
@@ -76,11 +77,12 @@
                     </ul>
                 </div> --}}
 
-                <div class="col-12 col-lg-10 offset-lg-1">
+                <div class="col-12 col-lg-12">
                     @yield('content')
                 </div>
             </div>
         </main>
+        <flash></flash>
     </div>
 
     <!-- Scripts -->
