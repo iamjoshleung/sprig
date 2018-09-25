@@ -28,7 +28,7 @@
                 @if( $movie->desc )
                 <p class="mt-5">簡介</p>
                 <div class="desc">
-                    {{ $movie->desc }}
+                    {!! $movie->desc !!}
                 </div>
                 @endif
 

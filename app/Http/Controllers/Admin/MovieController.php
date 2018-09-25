@@ -83,6 +83,16 @@ class MovieController extends Controller
      */
     public function store()
     {
+        request()->validate([
+            'title' => 'required|min:5|max:255',
+            'issuer' => 'max:255',
+            'desc' => 'max:1000',
+            'download_link' => 'required|url',
+            'released_at' => 'date',
+            'cover_image' => 'required|image',
+            'preview_images.*' => 'image'
+        ]);
+
         $movie = Movie::create(request()->only(['title', 'issuer', 'released_at', 'desc', 'download_link']));
 
         $movie->addMediaFromRequest('cover_image')->withResponsiveImages()->toMediaCollection('cover', config('filesystems.cloud'));
@@ -133,6 +143,16 @@ class MovieController extends Controller
      */
     public function update(Movie $movie)
     {
+        request()->validate([
+            'title' => 'required|min:5|max:255',
+            'issuer' => 'max:255',
+            'desc' => 'max:1000',
+            'download_link' => 'required|url',
+            'released_at' => 'date',
+            'cover_image' => 'image',
+            'preview_images.*' => 'image'
+        ]);
+
         $movie->update(request()->only(['title', 'issuer', 'desc', 'download_link', 'released_at']));
 
         if (request()->hasFile('cover_image')) {

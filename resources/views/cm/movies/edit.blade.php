@@ -8,7 +8,7 @@
                 @csrf @method('PATCH')
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" name="title" class="form-control" id="title" value="{{ $movie->title }}">
+                    <input type="text" name="title" class="form-control" id="title" value="{{ $movie->title }}" required>
                 </div>
                 <div class="form-group">
                     <label for="issuer">Issuer</label>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="form-group">
                     <label for="download_link">Download Link</label>
-                    <input type="url" name="download_link" class="form-control" id="download_link" value="{{ $movie->download_link }}">
+                    <input type="url" name="download_link" class="form-control" id="download_link" value="{{ $movie->download_link }}" required>
                 </div>
                 <div class="form-group">
                     <label for="released_at">Released at</label>

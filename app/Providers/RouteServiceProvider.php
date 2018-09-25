@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\File;
+use App\Movie;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -28,7 +30,11 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
 
         Route::bind('file', function($value, $route) {
-            return $this->getModel(\App\File::class, $value);
+            return $this->getModel(File::class, $value);
+        });
+
+        Route::bind('movie', function($value, $route) {
+            return $this->getModel(Movie::class, $value);
         });
     }
 

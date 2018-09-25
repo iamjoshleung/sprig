@@ -3,6 +3,7 @@
 namespace App;
 
 use Spatie\MediaLibrary\File;
+use App\Http\Traits\Hashidable;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\Models\Media;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +12,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 class Movie extends Model implements HasMedia
 {
-    use HasMediaTrait;
+    use HasMediaTrait, Hashidable;
 
     protected $guarded = [];
 

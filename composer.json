@@ -16,7 +16,7 @@
         "league/flysystem-aws-s3-v3": "~1.0",
         "spatie/laravel-medialibrary": "^7.0.0",
         "tumblr/tumblr": "^0.4.0",
-        "vinkla/hashids": "^5.0"
+        "vinkla/hashids": "5.0.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

@@ -36,6 +36,7 @@ return [
     | you would like.
     |
     */
+    
 
     'connections' => [
 
@@ -51,6 +52,11 @@ return [
 
         \App\File::class => [
             'salt' => \App\File::class . env('HASHID_SALT', 'salt'),
+            'length' => 7,
+        ],
+
+        \App\Movie::class => [
+            'salt' => \App\Movie::class . env('HASHID_SALT', 'salt'),
             'length' => 7,
         ],
 
