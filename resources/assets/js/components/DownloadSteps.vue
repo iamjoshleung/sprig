@@ -1,21 +1,19 @@
 <template>
   <div>
-    <div class="file-info text-center">
+    <div class="file-info">
       <h1 class="file-info__name">{{ file.name }}</h1>
       <div class="file-info__size">{{ prettySize }}</div>
     </div>
-    <div class="download-steps text-center">
+    <div class="download-steps">
       <!-- klouderr 728-2 -->
       <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-4679085340013866" data-ad-slot="7988482236"></ins>
 
       <h2 class="mt-4">下載步驟</h2>
 
       <div class="step step1" v-if="currentStep === 1">
-        <h3 class="step__heading">1. 驗證你人類的身份</h3>
+        <h3 class="step__heading mb-5">1. 驗證你人類的身份</h3>
         <form action="">
-          <div class="text-center">
-            <div class="g-recaptcha d-inline-block" data-callback="getResponseCode" data-sitekey="6LeJVWAUAAAAAKaPN3fOja9vS54P27n1Ygp-mdHc"></div>
-          </div>
+          <div class="g-recaptcha d-inline-block" data-callback="getResponseCode" data-sitekey="6LeJVWAUAAAAAKaPN3fOja9vS54P27n1Ygp-mdHc"></div>
           <!-- <div class="mt-3">
                         <button type="submit" class="button button-primary">驗證</button>
                     </div> -->
@@ -24,12 +22,10 @@
 
       <div class="step step2" v-else-if="currentStep === 2">
         <h3 class="step__heading">2. 等待 {{ countDownNum }} 秒</h3>
-        <div class="text-center">
-          <div class="circle">
-            <div class="count">{{ countDownNum }}</div>
-            <div class="l-half"></div>
-            <div class="r-half"></div>
-          </div>
+        <div class="circle">
+          <div class="count">{{ countDownNum }}</div>
+          <div class="l-half"></div>
+          <div class="r-half"></div>
         </div>
       </div>
 

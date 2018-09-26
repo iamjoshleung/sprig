@@ -46,11 +46,11 @@
         }
     }
 
-    .more-movie-item {
-        width: 100%;
+    // .more-movie-item {
+    //     width: 100%;
 
-        @include media-breakpoint-up(lg) {
-            max-width: 32%;
-        }
-    }
+    //     @include media-breakpoint-up(lg) {
+    //         max-width: 32%;
+    //     }
+    // }
 }

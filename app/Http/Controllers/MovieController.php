@@ -25,7 +25,9 @@ class MovieController extends Controller
      */
     public function show(Movie $movie) {
         $movie->increaseVisitCount();
-        $topMovies = Movie::getTopMovies();
+        $topMovies = Movie::getTopMovies()->filter(function($item) use($movie) {
+            return $item->id !== $movie->id;
+        });
 
         return view('movies.show', ['movie' => $movie, 'topMovies' => $topMovies]);
     }

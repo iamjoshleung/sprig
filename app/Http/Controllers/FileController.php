@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\File;
+use App\Movie;
 use App\DownloadToken;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreFile;
@@ -38,7 +39,8 @@ class FileController extends Controller
      * @return 
      */
     public function show(File $file) {
-        return view('download', ['file' => $file]);
+        $topMovies = Movie::getTopMovies();
+        return view('download', ['file' => $file, 'topMovies' => $topMovies]);
     }
 
     /**

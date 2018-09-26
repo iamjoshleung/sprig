@@ -10,11 +10,12 @@
                 </h1>
                 <h2 class="h4 mb-0 d-none d-md-block">同志資源社區</h2>
             </div>
-            <nav class="col-6 d-flex align-items-center l-header__desktop-nav">
-                <a href="{{ route('photosets.index') }}" class="h3 btn btn-success btn-lg mb-0 mr-4"><i class="fas fa-camera"></i> 圖片</a>
-                <a href="{{ route('videos.index') }}" class="h3 mb-0 btn btn-danger btn-lg"><i class="fas fa-fire"></i> 視頻</a>
+            <nav class="col-7 col-lg-8 d-flex align-items-center l-header__desktop-nav justify-content-end">
+                <a href="{{ route('photosets.index') }}" class="h3 mb-0 mr-4">圖片</a>
+                <a href="{{ route('videos.index') }}" class="h3 mb-0 mr-4">視頻</a>
+                <a href="{{ route('movies.index') }}" class="h3 mb-0">電影下載</a>
             </nav>
-            <div class="col-3 d-flex align-items-center">
+            <div class="col-2 col-lg-1 d-flex align-items-center">
                 <div class="i-hamburger js-icon-burger">
                     <div class="i-hamburger__line line1"></div>
                     <div class="i-hamburger__line line2"></div>

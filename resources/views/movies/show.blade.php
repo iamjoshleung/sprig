@@ -1,6 +1,6 @@
 @extends('layouts.master') 
 @section('main')
-<div class="l-movies-show js-pages-movies-show">
+<page-show-movie class="l-movies-show js-pages-movies-show" :data="{{ $movie }}" inline-template>
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-6">
@@ -39,18 +39,34 @@
         </div>
 
         <div class="col-12 mt-5">
+            @if($topMovies->count() > 0)
             <h3 class="h4 mb-5">更多電影</h3>
-            <div class="d-flex flex-wrap justify-content-between">
-                @foreach($topMovies as $movie)
+            @endif
+
+            <div class="row">
+                @foreach($topMovies as $rMovie)
+                <div class="col-12 col-lg-3">
+                    <article class="mb-5 more-movie-item">
+                        <a href="{{ route('movies.show', $rMovie) }}" class="text-dark">
+                                    {{ $rMovie->getMedia('cover')[0]('thumb') }}
+                                    <h3 class="mt-3">{{ $rMovie->title }}</h3>
+                                </a>
+                    </article>
+                </div>
+                @endforeach
+            </div>
+
+            {{-- <div class="d-flex flex-wrap justify-content-between">
+                @foreach($topMovies as $rMovie)
                 <article class="mb-5 more-movie-item">
-                    <a href="{{ route('movies.show', $movie) }}" class="text-dark">
-                        {{ $movie->getMedia('cover')[0]('thumb') }}
-                        <h3 class="mt-3">{{ $movie->title }}</h3>
+                    <a href="{{ route('movies.show', $rMovie) }}" class="text-dark">
+                        {{ $rMovie->getMedia('cover')[0]('thumb') }}
+                        <h3 class="mt-3">{{ $rMovie->title }}</h3>
                     </a>
                 </article>
                 @endforeach
-            </div>
+            </div> --}}
         </div>
     </div>
-</div>
+</page-show-movie>
 @endsection
