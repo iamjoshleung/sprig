@@ -14,9 +14,9 @@
                         <article class="mb-5 more-movie-item">
                             <a href="{{ route('movies.show', $rMovie) }}" class="text-dark">
                                 <div class="d-flex">
-                                    <div class="col-3 p-0 pr-4">
+                                    {{-- <div class="col-3 p-0 pr-4">
                                         {{ $rMovie->getMedia('cover')[0]('thumb') }}
-                                    </div>
+                                    </div> --}}
                                     <h3 class="h4 flex-grow-1">{{ $rMovie->title }}</h3>
                                 </div>
                             </a>
