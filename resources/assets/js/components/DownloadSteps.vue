@@ -6,7 +6,7 @@
     </div>
     <div class="download-steps">
       <!-- klouderr 728-2 -->
-      <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-4679085340013866" data-ad-slot="7988482236"></ins>
+      <!-- <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-4679085340013866" data-ad-slot="7988482236"></ins> -->
 
       <h2 class="mt-4">下載步驟</h2>
 
