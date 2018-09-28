@@ -22,11 +22,14 @@
 
       <div class="step step2" v-else-if="currentStep === 2">
         <h3 class="step__heading">2. 等待 {{ countDownNum }} 秒</h3>
-        <div class="circle">
+        <div class="progress--circle" :class="`progress--${progress}`">
+            <div class="progress__number">{{ progress }}%</div>
+        </div>
+        <!-- <div class="circle">
           <div class="count">{{ countDownNum }}</div>
           <div class="l-half"></div>
           <div class="r-half"></div>
-        </div>
+        </div> -->
       </div>
 
       <div class="step step3" v-else>
@@ -41,6 +44,7 @@
 
 <script>
 import { eventBus } from "../app";
+import Visibility from "visibilityjs";
 
 export default {
   props: ["file"],
@@ -51,6 +55,7 @@ export default {
       downloadToken: "",
       data: this.file,
       isDownloaded: false,
+      progress: 0,
       msg: {
         status: "",
         body: ""
@@ -94,11 +99,20 @@ export default {
         });
     },
     startCountDown() {
-      setInterval(() => {
+      // setInterval(() => {
+      //   if (this.countDownNum >= 0) {
+      //     this.countDownNum -= 1;
+      //   }
+      // }, 1000);
+
+      const visibleId = Visibility.every(1000, () => {
         if (this.countDownNum >= 0) {
           this.countDownNum -= 1;
+          this.progress += 5;
+        } else {
+          Visibility.stop(visibleId);
         }
-      }, 1000);
+      });
     },
     getDownloadToken() {
       axios
