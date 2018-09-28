@@ -69,7 +69,7 @@ export default {
     }
   },
   mounted() {
-    const adsbygoogle = (window.adsbygoogle || []).push({});
+    // const adsbygoogle = (window.adsbygoogle || []).push({});
   },
   created() {
     eventBus.$on("receivedResCode", token => {
