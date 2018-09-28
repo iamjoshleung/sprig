@@ -83,14 +83,15 @@ class MovieController extends Controller
      */
     public function store()
     {
+
         request()->validate([
             'title' => 'required|min:5|max:255',
-            'issuer' => 'max:255',
-            'desc' => 'max:1000',
+            'issuer' => 'nullable|max:255',
+            'desc' => 'nullable|max:5000',
             'download_link' => 'required|url',
-            'released_at' => 'date',
+            'released_at' => 'nullable|date',
             'cover_image' => 'required|image',
-            'preview_images.*' => 'image'
+            'preview_images.*' => 'nullable|image'
         ]);
 
         $movie = Movie::create(request()->only(['title', 'issuer', 'released_at', 'desc', 'download_link']));
@@ -145,10 +146,10 @@ class MovieController extends Controller
     {
         request()->validate([
             'title' => 'required|min:5|max:255',
-            'issuer' => 'max:255',
-            'desc' => 'max:1000',
+            'issuer' => 'nullable|max:255',
+            'desc' => 'nullable|max:5000',
             'download_link' => 'required|url',
-            'released_at' => 'date',
+            'released_at' => 'nullable|date',
             'cover_image' => 'image',
             'preview_images.*' => 'image'
         ]);

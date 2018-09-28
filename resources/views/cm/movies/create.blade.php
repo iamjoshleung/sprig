@@ -9,27 +9,39 @@
                     Movie has been created
             </div>
             @endif
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+
             <form method="POST" action="{{ route('cm.movies.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" name="title" class="form-control" id="title" required>
+                    <input type="text" name="title" class="form-control" id="title" value="{{ old('title') }}" required>
                 </div>
                 <div class="form-group">
                     <label for="issuer">Issuer</label>
-                    <input type="text" name="issuer" class="form-control" id="issuer">
+                    <input type="text" name="issuer" class="form-control" value="{{ old('issuer') }}" id="issuer">
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea class="form-control" name="desc" id="description" rows="3"></textarea>
+                    <textarea class="form-control" name="desc" id="description" value="{{ old('desc') }}" rows="3"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="download_link">Download Link</label>
-                    <input type="url" name="download_link" class="form-control" id="download_link" required>
+                    <input type="url" name="download_link" class="form-control" value="{{ old('download_link') }}" id="download_link" required>
                 </div>
                 <div class="form-group">
                     <label for="released_at">Released at</label>
-                    <input type="date" name="released_at" class="form-control" id="released_at">
+                    <input type="date" name="released_at" class="form-control" value="{{ old('released_at') }}" id="released_at">
                 </div>
                 <div class="form-group">
                     <label for="cover_image">Cover</label>

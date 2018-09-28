@@ -4,6 +4,18 @@
     <div class="row">
         <div class="col-12">
             <h1 class="h3">Editting "{{ $movie->title }}"</h1>
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            
             <form method="POST" action="{{ route('cm.movies.update', $movie) }}" enctype="multipart/form-data">
                 @csrf @method('PATCH')
                 <div class="form-group">
@@ -16,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea class="form-control" name="desc" id="description" rows="3">{{ $movie->desc }}</textarea>
+                    <textarea class="form-control" name="desc" id="description" rows="3" max="5000">{{ $movie->desc }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="download_link">Download Link</label>
