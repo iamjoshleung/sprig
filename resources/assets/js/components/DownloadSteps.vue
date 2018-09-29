@@ -6,7 +6,7 @@
     </div>
     <div class="download-steps">
       <!-- klouderr 728-2 -->
-      <!-- <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-4679085340013866" data-ad-slot="7988482236"></ins> -->
+      <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-4679085340013866" data-ad-slot="7988482236"></ins>
 
       <h2 class="mt-4">下載步驟</h2>
 
@@ -23,7 +23,7 @@
       <div class="step step2" v-else-if="currentStep === 2">
         <h3 class="step__heading">2. 等待 {{ countDownNum }} 秒</h3>
         <div class="progress--circle" :class="`progress--${progress}`">
-            <div class="progress__number">{{ progress }}%</div>
+          <div class="progress__number">{{ progress }}%</div>
         </div>
         <!-- <div class="circle">
           <div class="count">{{ countDownNum }}</div>
@@ -99,12 +99,6 @@ export default {
         });
     },
     startCountDown() {
-      // setInterval(() => {
-      //   if (this.countDownNum >= 0) {
-      //     this.countDownNum -= 1;
-      //   }
-      // }, 1000);
-
       const visibleId = Visibility.every(1000, () => {
         if (this.countDownNum >= 0) {
           this.countDownNum -= 1;

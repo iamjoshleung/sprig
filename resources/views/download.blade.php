@@ -22,8 +22,7 @@
                             </a>
                         </article>
                     </div>
-                    @endforeach
-                    @foreach($topMovies as $rMovie)
+                    @endforeach @foreach($topMovies as $rMovie)
                     <div class="col-12 p-0">
                         <article class="mb-5 more-movie-item">
                             <a href="{{ route('movies.show', $rMovie) }}" class="text-dark">

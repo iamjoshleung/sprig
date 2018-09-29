@@ -1,9 +1,5 @@
 <?php
 
-use App\Mail\FeedbackSent;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\ReceiveFeedback;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,9 +44,10 @@ Route::get('/videos', 'VideoController@index')->name('videos.index');
 Route::get('/movies', 'MovieController@index')->name('movies.index');
 Route::get('/movies/{movie}', 'MovieController@show')->name('movies.show');
 
+Route::get('/download-center/{file}', 'DownloadCenterController@show')->name('download-center.show');
+
 Route::prefix('cm')->group(function () {
     Route::get('/', 'AdminController@index')->name('cm.index');
-
 
     Route::namespace('Admin')->middleware('auth.admin')->group(function () {
         Route::get('/files', 'FileController@index')->name('cm.files.index');
@@ -82,4 +79,3 @@ Route::prefix('cm')->group(function () {
     $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
     $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 });
-
