@@ -9,6 +9,20 @@
             <div class="col-12 col-lg-4">
                 <div class="row">
                     <h3 class="h4 font-weight-normal mb-4">更多電影</h3>
+                    @foreach($featuredMovies as $fMovie)
+                    <div class="col-12 p-0">
+                        <article class="mb-5 more-movie-item">
+                            <a href="{{ route('movies.show', $fMovie) }}" class="text-dark">
+                                <div class="d-flex">
+                                    <div class="col-3 p-0 pr-4">
+                                        {{ $fMovie->getMedia('cover')[0]('thumb') }}
+                                    </div>
+                                    <h3 class="h4 flex-grow-1"><span class="badge badge-pill badge-success">推薦</span> {{ $fMovie->title }}</h3>
+                                </div>
+                            </a>
+                        </article>
+                    </div>
+                    @endforeach
                     @foreach($topMovies as $rMovie)
                     <div class="col-12 p-0">
                         <article class="mb-5 more-movie-item">

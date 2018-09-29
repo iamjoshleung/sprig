@@ -44,6 +44,10 @@
                     <input type="date" name="released_at" class="form-control" value="{{ old('released_at') }}" id="released_at">
                 </div>
                 <div class="form-group">
+                    <label for="is_featured">Is featured?</label>
+                    <input type="checkbox" name="is_featured" class="form-check-input ml-5" value="1" id="is_featured" @if(old('is_featured')) checked=true @endif>
+                </div>
+                <div class="form-group">
                     <label for="cover_image">Cover</label>
                     <input type="file" name="cover_image" class="form-control-file" id="cover_image" required>
                 </div>

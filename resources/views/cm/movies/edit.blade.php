@@ -39,6 +39,11 @@
                     <input type="date" name="released_at" class="form-control" id="released_at" value="{{ $movie->released_at->format('Y-m-d') }}">
                 </div>
                 <div class="form-group">
+                    <label for="is_featured">Is featured?</label>
+                    <input type="checkbox" name="is_featured" class="form-check-input ml-5" id="is_featured" value="1" @if($movie->is_featured) checked=true @endif>
+                </div>
+                {{ $movie->is_featured }}
+                <div class="form-group">
                     <label for="cover_image">Cover</label>
                     <input type="file" name="cover_image" class="form-control-file" id="cover_image"> 
 

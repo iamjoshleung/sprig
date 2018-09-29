@@ -24,6 +24,7 @@ class Movie extends Model implements HasMedia
 
     protected $casts = [
         'released_at' => 'datetime:Y-m-d',
+        'is_featured' => 'boolean'
     ];
 
     public function registerMediaCollections()
@@ -98,5 +99,23 @@ class Movie extends Model implements HasMedia
      */
     public function hasCoverImage() {
         return $this->getMedia('cover')->count() === 1;
+    }
+
+    /**
+     * 
+     * 
+     * @return 
+     */
+    public function scopeFeatured($query) {
+        return $query->where('is_featured', '=', true);
+    }
+
+    /**
+     * 
+     * 
+     * @return 
+     */
+    public function getPath() {
+        return route('cm.movies.show', $this);
     }
 }

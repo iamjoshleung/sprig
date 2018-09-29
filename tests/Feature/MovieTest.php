@@ -38,40 +38,19 @@ class MovieTest extends TestCase
 
         $this->signInAsAdmin();
 
-        $data = [
-            'title' => 'Some title',
-            'issuer' => 'Some issuer',
-            'released_at' => '2018-05-07',
-            'desc' => 'Some desc',
-            'download_link' => 'http://website.com/download/xxx',
-            'cover_image' => UploadedFile::fake()->image('cover_image.jpg'),
-            'preview_images' => [
-                UploadedFile::fake()->image('photo1.jpg'),
-                UploadedFile::fake()->image('photo2.jpg')
-            ]
-        ];
+        $movie = $this->postMovie();
 
-        $this->postJson(route('cm.movies.store'), $data)->assertStatus(201);
-
-        // dd(Movie::first()->getMedia('cover')[0]->getFullUrl());
-
-        $this->assertDatabaseHas('movies', [
-            'title' => 'Some title',
-            'issuer' => 'Some issuer',
-            'released_at' => '2018-05-07',
-            'desc' => 'Some desc',
-            'download_link' => 'http://website.com/download/xxx',
-        ]);
-        $this->assertCount(1, Movie::first()->getMedia('cover'));
-        $this->assertCount(2, Movie::first()->getMedia('previews'));
+        $this->assertCount(1, Movie::all());
+        $this->assertCount(1, $movie->getMedia('cover'));
+        $this->assertCount(2, $movie->getMedia('previews'));
     }
 
     /** @test */
     public function non_admin_cannot_remove_movies()
     {
-        $movie = factory('App\Movie')->create();
+        $movie = factory(Movie::class)->create();
 
-        $this->deleteJson("/cm/movies/{$movie->id}")
+        $this->deleteJson($movie->getPath())
             ->assertStatus(401);
     }
 
@@ -82,7 +61,7 @@ class MovieTest extends TestCase
 
         $movie = factory('App\Movie')->create();
 
-        $this->deleteJson("/cm/movies/{$movie->id}")
+        $this->deleteJson($movie->getPath())
             ->assertStatus(204);
 
         $this->assertDatabaseMissing('movies', [
@@ -95,7 +74,7 @@ class MovieTest extends TestCase
     {
         $movie = factory('App\Movie')->create();
 
-        $this->patchJson("/cm/movies/{$movie->id}")
+        $this->patchJson($movie->getPath())
             ->assertStatus(401);
     }
 
@@ -106,8 +85,9 @@ class MovieTest extends TestCase
 
         $movie = factory('App\Movie')->create();
 
-        $this->patchJson("/cm/movies/{$movie->id}", [
+        $this->patchJson($movie->getPath(), [
             'title' => 'updated title',
+            'download_link' => $movie->download_link,
             'cover_image' => UploadedFile::fake()->image('cover_image.jpg'),
             'preview_images' => [
                 UploadedFile::fake()->image('photo1.jpg'),
@@ -129,7 +109,7 @@ class MovieTest extends TestCase
 
         $this->expectException(Exception::class);
 
-        $this->patchJson("/cm/movies/{$movie->id}", [
+        $this->patchJson($movie->getPath(), [
             'title' => 'updated title',
             'cover_image' => UploadedFile::fake()->image('cover_image2.jpg'),
         ])->assertStatus(401);
@@ -141,8 +121,9 @@ class MovieTest extends TestCase
 
         $movie = $this->postMovie();
 
-        $this->patchJson("/cm/movies/{$movie->id}", [
+        $this->patchJson($movie->getPath(), [
             'title' => 'updated title',
+            'download_link' => $movie->download_link,
             'preview_images' => [
                 UploadedFile::fake()->image('preview1.jpg'),
                 UploadedFile::fake()->image('preview2.jpg')
@@ -158,7 +139,7 @@ class MovieTest extends TestCase
 
         $movie = $this->postMovie();
 
-        $this->deleteJson("/cm/movies/{$movie->id}/cover/{$movie->getMedia('cover')[0]->id}")->assertStatus(204);
+        $this->deleteJson($movie->getPath() . "/cover/{$movie->getMedia('cover')[0]->id}")->assertStatus(204);
         $this->assertCount(0, $movie->fresh()->getMedia('cover'));
     }
 
@@ -171,7 +152,7 @@ class MovieTest extends TestCase
         $firstPreview = $movie->getMedia('previews')[0];
         $secondPreview = $movie->getMedia('previews')[1];
 
-        $this->deleteJson("/cm/movies/{$movie->id}/previews/{$firstPreview->id}")->assertStatus(204);
+        $this->deleteJson($movie->getPath() . "/previews/{$firstPreview->id}")->assertStatus(204);
 
         $this->assertCount(1, $movie->fresh()->getMedia('previews'));
 
@@ -201,9 +182,9 @@ class MovieTest extends TestCase
 
         $movie = Movie::first();
 
-        // dd($this->getJson("/cm/movies/{$movie->id}")->json());
+        // dd($this->getJson($movie->getPath())->json());
 
-        $this->getJson("/cm/movies/{$movie->id}")
+        $this->getJson($movie->getPath())
             ->assertJsonStructure([
                 'id',
                 'title',
@@ -248,11 +229,11 @@ class MovieTest extends TestCase
         
         $movie = $this->postMovie();
 
-        $this->get(route('movies.show', $movie));
+        $this->getJson(route('movies.show', $movie));
 
         $this->assertEquals(1, $movie->fresh()->getVisitCount());
 
-        $this->get(route('movies.show', $movie));
+        $this->getJson(route('movies.show', $movie));
 
         // dd(Movie::first()->getVisitCount());
 
@@ -294,6 +275,7 @@ class MovieTest extends TestCase
             'desc' => 'Some desc',
             'download_link' => 'http://website.com/download/xxx',
             'cover_image' => UploadedFile::fake()->image('cover_image.jpg'),
+            'is_featured' => '0',
             'preview_images' => [
                 UploadedFile::fake()->image('photo1.jpg'),
                 UploadedFile::fake()->image('photo2.jpg')

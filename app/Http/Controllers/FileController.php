@@ -40,7 +40,8 @@ class FileController extends Controller
      */
     public function show(File $file) {
         $topMovies = Movie::getTopMovies();
-        return view('download', ['file' => $file, 'topMovies' => $topMovies]);
+        $featuredMovies = Movie::featured()->take(3)->get();
+        return view('download', compact('file', 'topMovies', 'featuredMovies'));
     }
 
     /**

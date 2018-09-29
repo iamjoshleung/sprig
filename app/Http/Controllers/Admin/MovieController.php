@@ -91,10 +91,11 @@ class MovieController extends Controller
             'download_link' => 'required|url',
             'released_at' => 'nullable|date',
             'cover_image' => 'required|image',
-            'preview_images.*' => 'nullable|image'
+            'preview_images.*' => 'nullable|image',
+            'is_featured' => 'nullable|boolean'
         ]);
 
-        $movie = Movie::create(request()->only(['title', 'issuer', 'released_at', 'desc', 'download_link']));
+        $movie = Movie::create(request()->only(['title', 'issuer', 'released_at', 'desc', 'download_link', 'is_featured']));
 
         $movie->addMediaFromRequest('cover_image')->withResponsiveImages()->toMediaCollection('cover', config('filesystems.cloud'));
         
@@ -150,11 +151,12 @@ class MovieController extends Controller
             'desc' => 'nullable|max:5000',
             'download_link' => 'required|url',
             'released_at' => 'nullable|date',
-            'cover_image' => 'image',
-            'preview_images.*' => 'image'
+            'cover_image' => 'nullable|image',
+            'preview_images.*' => 'image',
+            'is_featured' => 'nullable|boolean',
         ]);
 
-        $movie->update(request()->only(['title', 'issuer', 'desc', 'download_link', 'released_at']));
+        $movie->update(request()->only(['title', 'issuer', 'desc', 'download_link', 'released_at', 'is_featured']));
 
         if (request()->hasFile('cover_image')) {
             if ($movie->hasCoverImage()) {
