@@ -1,4 +1,7 @@
 @extends('layouts.master') 
+
+@section('title', "圖集 |")
+
 @section('main')
 <div class="l-photosets">
     <div class="container">

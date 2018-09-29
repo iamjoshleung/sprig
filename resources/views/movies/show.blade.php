@@ -1,4 +1,7 @@
 @extends('layouts.master') 
+
+@section('title', "下載 {$movie->title} |")
+
 @section('main')
 <page-show-movie class="l-movies-show js-pages-movies-show" :data="{{ $movie }}" inline-template>
     <div class="container">
