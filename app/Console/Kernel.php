@@ -2,8 +2,6 @@
 
 namespace App\Console;
 
-use App\TumblrSite;
-use App\Services\TumblrScrapper;
 use App\Jobs\ProcessTumblrImages;
 use App\Jobs\ProcessTumblrVideos;
 use Illuminate\Console\Scheduling\Schedule;
@@ -17,29 +15,38 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
     ];
 
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
-     * @return void
+     * @param \Illuminate\Console\Scheduling\Schedule $schedule
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(new ProcessTumblrImages)->hourly();
-        $schedule->job(new ProcessTumblrVideos)->hourly();
+        $schedule->job(new ProcessTumblrImages())->everyMinute();
+        $schedule->job(new ProcessTumblrVideos())->everyMinute();
+
+        // $uniqueImage = [];
+
+        // Photoset::all()->filter(function ($item) use (&$uniqueImage) {
+        //     if (in_array($item->images, $uniqueImage)) {
+        //         // address is a duplicate
+        //         return $item;
+        //     }
+
+        //     $uniqueImage[] = $item->images;
+        // })->map(function($photoset) {
+        //     $photoset->delete();
+        // });
     }
 
     /**
      * Register the commands for the application.
-     *
-     * @return void
      */
     protected function commands()
     {
-        $this->load(__DIR__ . '/Commands');
+        $this->load(__DIR__.'/Commands');
 
         require base_path('routes/console.php');
     }

@@ -2,14 +2,15 @@
 
 namespace App\Jobs;
 
-use App\TumblrSite;
-use Illuminate\Bus\Queueable;
+use App\Exceptions\TumblrRequestException;
 use App\Services\TumblrFilter;
 use App\Services\TumblrScrapper;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
+use App\TumblrSite;
+use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
 class ProcessTumblrVideos implements ShouldQueue
 {
@@ -17,18 +18,13 @@ class ProcessTumblrVideos implements ShouldQueue
 
     /**
      * Create a new job instance.
-     *
-     * @return void
      */
     public function __construct()
     {
-        //
     }
 
     /**
      * Execute the job.
-     *
-     * @return void
      */
     public function handle()
     {
@@ -36,7 +32,13 @@ class ProcessTumblrVideos implements ShouldQueue
 
         foreach ($sites as $site) {
             $scrapper = new TumblrScrapper($site);
-            $posts = $scrapper->scrapVideoPosts();
+
+            try {
+                $posts = $scrapper->scrapVideoPosts();
+            } catch (TumblrRequestException $e) {
+                report($e);
+                continue;
+            }
             $filter = new TumblrFilter($site->last_scrapped_videos_at, $posts);
             $collection = $filter->getFilteredVideos($filter->filterOldPosts($posts));
             if (sizeof($collection) <= 0) {
@@ -53,7 +55,7 @@ class ProcessTumblrVideos implements ShouldQueue
             }
 
             $site->update([
-                'last_scrapped_videos_at' => now()
+                'last_scrapped_videos_at' => now(),
             ]);
         }
     }
