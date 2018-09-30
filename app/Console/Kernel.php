@@ -24,8 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(new ProcessTumblrImages())->everyMinute();
-        $schedule->job(new ProcessTumblrVideos())->everyMinute();
+        $schedule->job(new ProcessTumblrImages())->hourly();
+        $schedule->job(new ProcessTumblrVideos())->hourly();
 
         // $uniqueImage = [];
 
