@@ -30,7 +30,7 @@
                     @foreach($movies as $movie)
                     <tr>
                         <th scope="row">{{ $movie->id }}</th>
-                        <td>{{ $movie->title }}</td>
+                        <td>@if($movie->is_featured) <span class="badge badge-success">Featured</span> @endif {{ $movie->title }}</td>
                         <td>{{ $movie->created_at }}</td>
                         <td>{{ $movie->getVisitCount() }}</td>
                         <td>
