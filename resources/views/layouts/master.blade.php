@@ -39,11 +39,12 @@
     @include('partials.footer')
     </div>
 
-    <script src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    {{-- <script src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> --}}
     <script src="{{ asset(mix('js/manifest.js')) }}"></script>
     <script src="{{ asset(mix('js/vendor.js')) }}"></script>
     <script src="{{ asset(mix('js/app.js')) }}"></script>
     @stack('scripts-after')
+    <script data-cfasync="false" src="//dkm6b5q0h53z4.cloudfront.net/?qbmkd=751045"></script>
 </body>
 
 </html>
