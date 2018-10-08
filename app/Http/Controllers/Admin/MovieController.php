@@ -9,11 +9,8 @@ use App\Http\Controllers\Controller;
 
 class MovieController extends Controller
 {
-
     /**
-     * 
-     * 
-     * @return 
+     * @return
      */
     public function index()
     {
@@ -27,9 +24,7 @@ class MovieController extends Controller
     }
 
     /**
-     * 
-     * 
-     * @return 
+     * @return
      */
     public function show(Movie $movie)
     {
@@ -39,9 +34,9 @@ class MovieController extends Controller
             $previewImages[] = [
                 'id' => $img->id,
                 'url' => $img->getFullUrl(),
-                'html' => $img->toHtml()
+                'html' => $img->toHtml(),
             ];
-        };
+        }
 
         $coverImage = $movie->getMedia('cover')[0];
 
@@ -56,20 +51,17 @@ class MovieController extends Controller
                 'cover' => [
                     'id' => $coverImage->id,
                     'url' => $coverImage->getFullUrl(),
-                    'html' => $coverImage->toHtml()
+                    'html' => $coverImage->toHtml(),
                 ],
-                'previews' => $previewImages
-            ]
+                'previews' => $previewImages,
+            ],
         ];
-
 
         return response($data, 200);
     }
 
     /**
-     * 
-     * 
-     * @return 
+     * @return
      */
     public function create()
     {
@@ -77,13 +69,10 @@ class MovieController extends Controller
     }
 
     /**
-     * 
-     * 
-     * @return 
+     * @return
      */
     public function store()
     {
-
         request()->validate([
             'title' => 'required|min:5|max:255',
             'issuer' => 'nullable|max:255',
@@ -92,14 +81,14 @@ class MovieController extends Controller
             'released_at' => 'nullable|date',
             'cover_image' => 'required|image',
             'preview_images.*' => 'nullable|image',
-            'is_featured' => 'nullable|boolean'
+            'is_featured' => 'nullable|boolean',
         ]);
 
         $movie = Movie::create(request()->only(['title', 'issuer', 'released_at', 'desc', 'download_link', 'is_featured']));
 
         $movie->addMediaFromRequest('cover_image')->withResponsiveImages()->toMediaCollection('cover', config('filesystems.cloud'));
-        
-        if(request()->hasFile('preview_images')) {
+
+        if (request()->hasFile('preview_images')) {
             $movie->addMultipleMediaFromRequest(['preview_images'])->each(function ($fileAdder) {
                 $fileAdder->withResponsiveImages()->toMediaCollection('previews', config('filesystems.cloud'));
             });
@@ -113,9 +102,7 @@ class MovieController extends Controller
     }
 
     /**
-     * 
-     * 
-     * @return 
+     * @return
      */
     public function destroy(Movie $movie)
     {
@@ -129,9 +116,7 @@ class MovieController extends Controller
     }
 
     /**
-     * 
-     * 
-     * @return 
+     * @return
      */
     public function edit(Movie $movie)
     {
@@ -139,9 +124,7 @@ class MovieController extends Controller
     }
 
     /**
-     * 
-     * 
-     * @return 
+     * @return
      */
     public function update(Movie $movie)
     {
@@ -166,8 +149,7 @@ class MovieController extends Controller
             }
         }
 
-
-        if( request()->hasFile('preview_images') ) {
+        if (request()->hasFile('preview_images')) {
             $movie->addMultipleMediaFromRequest(['preview_images'])->each(function ($fileAdder) {
                 $fileAdder->withResponsiveImages()->toMediaCollection('previews', config('filesystems.cloud'));
             });

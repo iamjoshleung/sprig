@@ -40,6 +40,7 @@
                 </div>
                 <div class="form-group">
                     <label for="is_featured">Is featured?</label>
+                    <input type="hidden" name="is_featured" value="0">
                     <input type="checkbox" name="is_featured" class="form-check-input ml-5" id="is_featured" value="1" @if($movie->is_featured) checked=true @endif>
                 </div>
                 {{ $movie->is_featured }}
